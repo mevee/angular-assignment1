@@ -1,3 +1,27 @@
-<p>this is p</p>
+<mat-toolbar>
+    <mat-toolbar-row>
+        <Button><mat-icon>menu</mat-icon></Button>
 
+        <span class="example-spacer"></span>
+        <h2>Hi, </h2>
+        <h2>{{loggedUser?.name}} </h2>
 
+        <div class="spacer10"></div>
+        <button>
+            <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+    <mat-drawer>
+
+    </mat-drawer>
+
+    <mat-sidenav>Start</mat-sidenav>
+    <mat-sidenav position="end">End</mat-sidenav>
+    <mat-sidenav-content>Add User</mat-sidenav-content>
+    <mat-sidenav-content>Main2</mat-sidenav-content>
+
+</mat-sidenav-container>

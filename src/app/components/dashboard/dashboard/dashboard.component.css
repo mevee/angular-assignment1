@@ -1,0 +1,34 @@
+ 
+
+.mainMenu{
+ height: 10%;
+ background-color: blue;
+
+}
+
+
+
+.title{
+height: 100%;
+display: flex;
+flex-direction: column;
+/* text-align: center; */
+justify-content: center;
+padding-left: 16px;
+
+}
+
+.content{
+    height: 100%;
+    width: 100%;
+    background-color: brown;
+ 
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .spacer10{
+    width: 10px;
+  }
