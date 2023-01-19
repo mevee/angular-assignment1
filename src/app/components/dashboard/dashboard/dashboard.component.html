@@ -1,27 +1,54 @@
-<mat-toolbar>
-    <mat-toolbar-row>
-        <Button><mat-icon>menu</mat-icon></Button>
+<mat-sidenav-container class="sidenav-container">
 
-        <span class="example-spacer"></span>
-        <h2>Hi, </h2>
-        <h2>{{loggedUser?.name}} </h2>
+    <!-- side sliding window view start-->
+    <mat-sidenav class="sidenav" [opened]="sideNavOpened">
+        <mat-sidenav position="end">End</mat-sidenav>
 
-        <div class="spacer10"></div>
-        <button>
-            <mat-icon>logout</mat-icon>
-        </button>
-    </mat-toolbar-row>
-</mat-toolbar>
+        <mat-toolbar>
+            <h3>Hi</h3>
+            <span class="example-spacer"></span>
+            <div (click)="toggle()" class="icon24">
+                <mat-icon>close</mat-icon>
+            </div>
+        </mat-toolbar>
 
-<mat-sidenav-container>
+        <div class="sidenav-options">
+            <button (click)="navigetTo(0)" class="sidenav-item">User List</button>
+            <button (click)="navigetTo(1)"  class="sidenav-item">Add User</button>
+        </div>
 
-    <mat-drawer>
 
-    </mat-drawer>
+    </mat-sidenav>
+    <!-- side sliding window view end-->
 
-    <mat-sidenav>Start</mat-sidenav>
-    <mat-sidenav position="end">End</mat-sidenav>
-    <mat-sidenav-content>Add User</mat-sidenav-content>
-    <mat-sidenav-content>Main2</mat-sidenav-content>
+    <!-- main content viewstart-->
+
+    <mat-sidenav-content>
+
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <Button (click)="toggle()"><mat-icon>menu</mat-icon></Button>
+
+                <span class="example-spacer"></span>
+                <h2>Hi, </h2>
+                <h2>{{loggedUser?.name}} </h2>
+
+                <div class="spacer10"></div>
+                <button (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                </button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <!-- app sub component will show up here -->
+
+        <ng-component></ng-component>
+
+    </mat-sidenav-content>
+
+
+
+
+    <!-- main content view end-->
 
 </mat-sidenav-container>

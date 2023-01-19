@@ -14,16 +14,15 @@ import { RouteConsts } from 'src/app/util/route-constants';
 export class AddUserComponent implements OnInit {
 
   constructor(private repository: RepoService, private router: Router, private _snackBar: MatSnackBar) {
-
   }
 
-
-  TAG: String = "LoginComponent"
+  TAG: String = "AddUserComponent"
   hide = true
 
   formData = {
-    userId: '',
+    userId: "",
     password: "",
+    cPassword: "",
     role: "",
   }
 
@@ -39,6 +38,10 @@ export class AddUserComponent implements OnInit {
     }
     else if (this.formData.password == "") {
       this.showSnackBar("Password is required")
+    } else if (this.formData.cPassword == "") {
+      this.showSnackBar("Confrim password is required")
+    } else if (this.formData.cPassword != this.formData.password) {
+      this.showSnackBar("Password do not matched")
     } else if (this.formData.role == "") {
       this.showSnackBar("Please select")
     } else {
@@ -50,7 +53,7 @@ export class AddUserComponent implements OnInit {
       user.password = this.formData.password;
       user.role = this.formData.role;
       this.repository.addUser(user)
-      this.router.navigate([RouteConsts.DASHBOARD]);
+      this.router.navigate([RouteConsts.DASHBOARD+'/'+RouteConsts.USER_LIST]);
     }
   }
 

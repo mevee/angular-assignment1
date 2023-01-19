@@ -1,34 +1,79 @@
- 
+ .mainMenu {
+     height: 10%;
+     background-color: blue;
 
-.mainMenu{
- height: 10%;
- background-color: blue;
+ }
 
+
+
+ .title {
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     /* text-align: center; */
+     justify-content: center;
+     padding-left: 16px;
+
+ }
+
+ .content {
+     height: 100%;
+     width: 100%;
+
+ }
+
+ .example-spacer {
+     flex: 1 1 auto;
+ }
+
+ .spacer10 {
+     width: 10px;
+ }
+
+ .sidenav-container {
+     height: 100vh;
+ }
+
+ .sidenav {
+     width: 200px;
+     background-color: white;
+ }
+
+ .sidenav-item {
+     text-align: center;
+     font-size: 1.0rem;
+
+     width: 100%;
+     height: 40px;
+     background-color: white;
+ }
+
+ .sidenav-item:hover {
+     font-size: 1.3rem;
+     background-color: white;
+ }
+
+ .sidenav-options {
+     align-items: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+ }
+
+ .topRightIcon {
+     font-size: 2rem;
+     position: relative;
+     right: 0;
+ }
+
+ .icon24 {
+     width: 24px;
+     height: 24px;
+     color: black;
+     text-align: center;
+ }
+
+ .highlight {
+    height: 100vh;
+    background-color: aquamarine;
 }
-
-
-
-.title{
-height: 100%;
-display: flex;
-flex-direction: column;
-/* text-align: center; */
-justify-content: center;
-padding-left: 16px;
-
-}
-
-.content{
-    height: 100%;
-    width: 100%;
-    background-color: brown;
- 
-}
-
-.example-spacer {
-    flex: 1 1 auto;
-  }
-
-  .spacer10{
-    width: 10px;
-  }
