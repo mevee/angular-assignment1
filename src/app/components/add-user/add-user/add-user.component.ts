@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { RepoService } from 'src/app/services/repo/repo.service';
 import { SessionService } from 'src/app/services/session/session.service';
@@ -14,11 +15,11 @@ import { RouteConsts } from 'src/app/util/route-constants';
 export class AddUserComponent implements OnInit {
 
   constructor(private repository: RepoService, private router: Router, private _snackBar: MatSnackBar) {
+    this._obsObject = new BehaviorSubject(new User())
   }
 
   TAG: String = "AddUserComponent"
   hide = true
-
   formData = {
     userId: "",
     password: "",
@@ -26,12 +27,32 @@ export class AddUserComponent implements OnInit {
     role: "",
   }
 
-  ngOnInit(): void {
-  }
+  private _obsObject: BehaviorSubject<User>;
 
+  ngOnInit(): void {
+    this.repository.getCurrentUser.subscribe((value) => {
+      console.log("AddUserComponent :: " + this.formData.role)
+
+      if (value != null) {
+        this.formData.userId = value.id!;
+        this.formData.password = value.password!;
+        this.formData.cPassword = value.password!;
+        this.formData.role = value.role!;
+       } else {
+        this.clear()
+      }
+    });
+
+  }
+  clear() {
+    this.formData.userId = "";
+    this.formData.password = ""
+    this.formData.cPassword = ""
+    this.formData.role = ""
+  }
   submit() {
     // console.log("onSubmit() of Register screen called");
-    console.log("DATA", this.formData);
+    console.log("AddUserComponent :: submit() ", this.formData);
 
     if (this.formData.userId == "") {
       this.showSnackBar("User is required")
@@ -53,7 +74,7 @@ export class AddUserComponent implements OnInit {
       user.password = this.formData.password;
       user.role = this.formData.role;
       this.repository.addUser(user)
-      this.router.navigate([RouteConsts.DASHBOARD+'/'+RouteConsts.USER_LIST]);
+      this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.USER_LIST]);
     }
   }
 
@@ -61,6 +82,8 @@ export class AddUserComponent implements OnInit {
     var m1: string = message != null ? message : "No message found"
     this._snackBar.open(m1, "OK", { duration: 400 });
   }
+
+
 
 
 }

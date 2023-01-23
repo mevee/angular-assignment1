@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { PeriodicElement } from 'src/app/models/user_table_element';
 import { RepoService } from 'src/app/services/repo/repo.service';
+import { RouteConsts } from 'src/app/util/route-constants';
 
 @Component({
   selector: 'app-users-list',
@@ -10,24 +12,22 @@ import { RepoService } from 'src/app/services/repo/repo.service';
 })
 export class UsersListComponent implements OnInit {
 
-  displayedColumns: string[] = ['User name', 'password', 'role'];
+  displayedColumns: string[] = ['User name', 'password', 'role', 'action'];
   userList: User[];
   // userList: _userList.asObservable;
 
 
 
-  constructor(private respo: RepoService) {
-    this.userList = respo.getAllUser();
+  constructor(private repo: RepoService, private router: Router) {
+    this.userList = []
+
   }
 
   ngOnInit(): void {
-
-    this.respo.userObs.subscribe(
-      val => {
-        console.log("UsersListComponent :: " + val)
-      },
-      error => console.log("error"),
-      () => console.log("complete"))
+    this.repo.getAllUser.subscribe((value) => {
+      this.userList = value
+      console.log("UsersListComponent :: " + this.userList)
+    });
   }
 
 
@@ -37,7 +37,12 @@ export class UsersListComponent implements OnInit {
     user.name = "Name" + Math.floor(Math.random() * 10000)
     user.password = "Name" + Math.floor(Math.random() * 10000)
     user.role = "Manager"
-    this.respo.addUser(user)
+    this.repo.addUser(user)
+  }
+
+  editUser(user: User) {
+    this.repo.editUser(user);
+    this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.ADD_USER]);
   }
 
 }
