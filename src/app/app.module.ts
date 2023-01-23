@@ -16,7 +16,9 @@ import { MatCardModule } from '@angular/material/card'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import {MatSidenavModule}    from '@angular/material/sidenav'
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { UsersListComponent } from './components/users-list/users-list.component'; 
+import {MatTableModule} from '@angular/material/table'; 
 
  
 
@@ -26,6 +28,7 @@ import {MatSidenavModule}    from '@angular/material/sidenav'
     AddUserComponent,
     LoginComponent,
     DashboardComponent,
+    UsersListComponent,
 
   ],
   imports: [
@@ -41,7 +44,9 @@ import {MatSidenavModule}    from '@angular/material/sidenav'
     MatCardModule,
     MatSnackBarModule,
     FormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatTableModule
 
   ],
   providers: [],
