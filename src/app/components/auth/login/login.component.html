@@ -5,16 +5,16 @@
         <input name="name" [(ngModel)]="formData.name" matInput>
     </mat-form-field> -->
 
-    
+
     <div class="container">
         <mat-card class=" column">
-            <mat-form-field appearance="fill">
+            <mat-form-field>
                 <mat-label>UserId</mat-label>
                 <input type="text" [(ngModel)]="formData.userId" matInput>
             </mat-form-field>
 
 
-            <mat-form-field appearance="fill">
+            <mat-form-field>
                 <mat-label>Password</mat-label>
                 <input [(ngModel)]="formData.password" id="password" matInput type="password" maxlength="12"
                     [type]="hide?'password':'text'">
@@ -22,6 +22,10 @@
             </mat-form-field>
 
             <button mat-button (click)="submit()">Submit</button>
+
+            <mat-spinner [color]="color" [mode]="mode" [ngStyle]="{'visibility':loading==true ? 'visible' : 'hidden'}">
+            </mat-spinner>
+
         </mat-card>
 
     </div>

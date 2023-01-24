@@ -16,7 +16,7 @@
                 <mat-icon matSuffix (click)="hide=!hide">{{hide?'visibility_off':'visibility'}}</mat-icon>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field>
                 <mat-label>Confirm Password</mat-label>
                 <input [(ngModel)]="formData.cPassword" id="password" matInput type="password" maxlength="12"
                     [type]="hide?'password':'text'">
@@ -24,7 +24,7 @@
                 <mat-icon matSuffix (click)="hide=!hide">{{hide?'visibility_off':'visibility'}}</mat-icon>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field >
                 <mat-label>Role</mat-label>
                 <select matNativeControl required [(ngModel)]="formData.role">
                     <option value="manager">Manager</option>
@@ -39,6 +39,9 @@
 
             </div>
            
+            <mat-spinner [color]="color" [mode]="mode" [ngStyle]="{'visibility':loading==true ? 'visible' : 'hidden'}">
+            </mat-spinner>
+            
         </mat-card>
 
     </div>

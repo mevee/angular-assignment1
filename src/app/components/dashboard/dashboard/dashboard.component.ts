@@ -15,7 +15,6 @@ import { LogoutDialogeComponent } from '../../logout-dialoge/logout-dialoge.comp
 })
 export class DashboardComponent implements OnInit {
   loggedUser: User | null;
-  // users: User[];
   sideNavOpened = false
 
   constructor(private session: SessionService,
@@ -45,10 +44,10 @@ export class DashboardComponent implements OnInit {
 
   navigetTo(index: number) {
     if (index == 0) {
-      this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.USER_LIST]);
+      this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.USER_LIST], { replaceUrl: true });
     } else if (index == 1) {
       this.repo.resetCurrrentUser();
-      this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.ADD_USER]);
+      this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.ADD_USER], { replaceUrl: true });
     }
     this.toggle(false)
   }
@@ -77,16 +76,15 @@ export class DashboardComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialog.open(LogoutDialogeComponent, dialogConfig);
-    dialogConfig.position = {
-      'top': '0',
-      left: '0'
-    };
+    // dialogConfig.position = {
+    //   'top': '0',
+    //   left: '0'
+    // };
 
     this.dialog.afterAllClosed.subscribe(() => {
       console.log("DashboardComponent subscribe()", "logout()")
       this.session.logout();
       this.router.navigate([RouteConsts.LOGIN]);
-
     })
 
   }

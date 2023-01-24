@@ -2,3 +2,13 @@ table {
     width: 90%;
     margin: 16px;
   }
+
+
+.searchBox{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 6px;
+  padding: 8px;
+ 
+}

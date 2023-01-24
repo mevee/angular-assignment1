@@ -2,3 +2,29 @@
     flex: 1 1 auto;
 
 }
+
+.row{
+    display: flex;
+    justify-items: end;
+}
+
+.primaryBtn{
+padding: 8px;
+background-color: rgb(75, 75, 211);
+border: 2px;
+margin-right: 6px;
+color: white;
+border-radius: 8px;
+
+
+}
+
+.normalBtn{
+    padding: 8px;
+ background-color: rgb(241, 47, 160);
+ border: 2px;
+ color: white;
+ border-radius: 8px;
+
+
+}

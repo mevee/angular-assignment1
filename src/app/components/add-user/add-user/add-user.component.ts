@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -19,6 +21,9 @@ export class AddUserComponent implements OnInit {
   }
 
   TAG: String = "AddUserComponent"
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  loading = false
   hide = true
   formData = {
     userId: "",

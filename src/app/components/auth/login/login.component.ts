@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { RepoService } from 'src/app/services/repo/repo.service';
 import { SessionService } from 'src/app/services/session/session.service';
 import { RouteConsts } from 'src/app/util/route-constants';
 
@@ -11,10 +14,13 @@ import { RouteConsts } from 'src/app/util/route-constants';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private session: SessionService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private session: SessionService,private repo :RepoService, private router: Router, private _snackBar: MatSnackBar) { }
 
   TAG: String = "LoginComponent"
-  hide =true
+  hide = true
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  loading = false
 
   formData = {
     userId: '',
@@ -28,7 +34,7 @@ export class LoginComponent implements OnInit {
   submit() {
     // console.log("onSubmit() of Register screen called");
     console.log("DATA", this.formData);
- 
+
     if (this.formData.userId == "") {
       this.showSnackBar("User is required")
     }
@@ -38,12 +44,27 @@ export class LoginComponent implements OnInit {
       this.showSnackBar("Congratulation you are registered Success");
 
       let user = new User();
-      user.id =  this.formData.userId;
+      user.id = this.formData.userId;
       user.name = this.formData.userId;
-      user.password = "NA";
-      user.role ="RANDOM-----";
-      this.session.saveUser(user)
-      this.router.navigate([RouteConsts.DASHBOARD]);
+      user.password = this.formData.password;
+      user.role = "NA";
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        
+        this.session.saveUser(user)
+        this.addLoggedUserToList()
+        this.router.navigate([RouteConsts.DASHBOARD]);
+      }, 2000);
+
+
+    }
+  }
+  addLoggedUserToList() {
+    let user = this.session.getUser()
+    if (user != undefined) {
+      this.repo.resetList()
+      this.repo.addUser(user)
     }
   }
 
