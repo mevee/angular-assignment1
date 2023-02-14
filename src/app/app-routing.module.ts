@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AddUserComponent } from './components/add-user/add-user/add-user.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { RouteConsts } from './util/route-constants';
 
@@ -18,7 +19,8 @@ const routes: Routes = [
     path: RouteConsts.LOGIN,
     component: LoginComponent,
     pathMatch: 'full',
-  }, {
+  },
+  {
     path: RouteConsts.DASHBOARD,
     component: DashboardComponent,
     children: [
@@ -32,27 +34,13 @@ const routes: Routes = [
       }
     ],
   },
-  // {
-  //   path: RouteConsts.DASHBOARD,
-  //   children: [
-  //     {
-  //       path: RouteConsts.ADD_USER,
-  //       component: AddUserComponent,
-  //     },
-  //     {
-  //       path: RouteConsts.USER_LIST,
-  //       component: UsersListComponent,
-  //     }
-  //   ],
-  //   pathMatch: 'full',
-
-  // },
-
   {
     path: RouteConsts.ADD_USER,
     component: AddUserComponent,
     pathMatch: 'full',
-  }
+  },
+
+  { path: '**', component: PageNotFoundComponent }
 
 ];
 

@@ -81,11 +81,11 @@ export class DashboardComponent implements OnInit {
     //   left: '0'
     // };
 
-    this.dialog.afterAllClosed.subscribe(() => {
-      console.log("DashboardComponent subscribe()", "logout()")
-      this.session.logout();
-      this.router.navigate([RouteConsts.LOGIN]);
-    })
+    // this.dialog.afterAllClosed.subscribe(() => {
+    //   console.log("DashboardComponent subscribe()", "logout()")
+    //   this.session.logout();
+    //   this.router.navigate([RouteConsts.LOGIN]);
+    // })
 
   }
 }

@@ -1,36 +1,55 @@
-<div class="mianform">
+<div class="container-fluid">
 
-    <!-- <mat-form-field class="field" appearance="outline">
-        <mat-label>Name</mat-label>
-        <input name="name" [(ngModel)]="formData.name" matInput>
-    </mat-form-field> -->
+    <div class="row justify-content-center m-5 pt-3">
+        <div class="spaceV24"></div>
+        <div class="spaceV24"></div>
+        <div class="spaceV24"></div>
+        <div class="spaceV24"></div>
+
+        <div class="row  rounded m-4 p-4 " style="width: 320px;">
+            <div class="form ">
+                <div class="spaceV8"></div>
+
+                <div class="form-group">
+
+                    <input type="text" [(ngModel)]="formData.userId" class="form-control alignCenter"
+                        aria-describedby="user id" placeholder="UserId">
+                </div>
+                <div class="spaceV8"></div>
+
+                <div class="form-group">
+                    <input [(ngModel)]="formData.password" matInput type="password" maxlength="12"
+                        [type]="hide?'password':'text'" class="form-control alignCenter" aria-describedby="password"
+                        placeholder="Password">
+                    <!-- <mat-icon matSuffix (click)="hide=!hide">{{hide?'visibility_off':'visibility'}}</mat-icon> -->
+                </div>
+                <div class="spaceV8"></div>
+
+                <button (click)="submit()" class="btn bg-primary text-white col-md-12">Submit</button>
+
+                <div class="loader">
+
+                    <div *ngIf="loading" class="spinner-border text-primary d-none">
+                    </div>
+                </div>
+                <div class="spaceV8"></div>
+
+            </div>
 
 
-    <div class="container">
-        <mat-card class=" column">
-            <mat-form-field>
-                <mat-label>UserId</mat-label>
-                <input type="text" [(ngModel)]="formData.userId" matInput>
-            </mat-form-field>
-
-
-            <mat-form-field>
+            <!-- <mat-form-field>
                 <mat-label>Password</mat-label>
                 <input [(ngModel)]="formData.password" id="password" matInput type="password" maxlength="12"
                     [type]="hide?'password':'text'">
                 <mat-icon matSuffix (click)="hide=!hide">{{hide?'visibility_off':'visibility'}}</mat-icon>
             </mat-form-field>
 
-            <button mat-button (click)="submit()">Submit</button>
+            <button (click)="submit()" class="btn bg-primary text-white">Submit</button> -->
 
-            <mat-spinner [color]="color" [mode]="mode" [ngStyle]="{'visibility':loading==true ? 'visible' : 'hidden'}">
-            </mat-spinner>
 
-        </mat-card>
-
+        </div>
     </div>
-
-
-
-
 </div>
+
+
+<!-- justify-content-md-center -->

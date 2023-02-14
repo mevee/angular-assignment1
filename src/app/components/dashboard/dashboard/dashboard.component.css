@@ -30,35 +30,32 @@
      width: 10px;
  }
 
+ .s-v-10 {
+    height: 10px;
+}
  .sidenav-container {
      height: 100vh;
  }
 
  .sidenav {
      width: 200px;
-     background-color: white;
+     /* background-color: white; */
  }
 
  .sidenav-item {
      text-align: center;
      font-size: 1.0rem;
-
      width: 100%;
      height: 40px;
-     background-color: white;
+     /* background-color: white; */
  }
 
- .sidenav-item:hover {
-     font-size: 1.3rem;
-     background-color: white;
- }
-
- .sidenav-options {
+ /* .sidenav-options {
      align-items: center;
      display: flex;
      flex-direction: column;
      justify-content: center;
- }
+ } */
 
  .topRightIcon {
      font-size: 2rem;

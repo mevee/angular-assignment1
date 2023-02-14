@@ -17,15 +17,8 @@ export class AppComponent {
     this.checkAndSetMainPage()
   }
 
-  // public open(modal: any): void {
-  //   this.modalService.open(modal);
-  // }
 
   checkAndSetMainPage() {
-    if (this.session.checkIfLoggedIn()) {
-      this.router.navigate([RouteConsts.DASHBOARD]);
-    } else {
-      this.router.navigate([RouteConsts.LOGIN]);
-    }
+    this.router.navigate([RouteConsts.LOGIN]);
   }
 }

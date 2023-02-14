@@ -1,14 +1,64 @@
 table {
-    width: 90%;
-    margin: 16px;
-  }
+  width: 90%;
+  margin: 16px;
+}
 
 
-.searchBox{
+.searchBox {
   width: 90%;
   display: flex;
   justify-content: center;
   margin: 6px;
   padding: 8px;
- 
+
+}
+
+.table {
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 1px;
+  width: 600px;
+  background-color: rgb(81, 177, 81);
+}
+
+
+.title {
+  padding: 6px;
+  background-color: rgb(84, 230, 84);
+}
+
+
+
+.col {
+  margin: 1px;
+  padding: 1rem;
+  background-color: rgb(84, 230, 84);
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+
+.colCell {
+  margin: 1px;
+  padding: 4px;
+  /* background-color: rgb(201, 201, 201); */
+  border: 2px solid #fff;
+  color: #000;
+}
+
+
+.lastCell {
+  margin: 1px;
+  padding: 4px;
+  background-color: #fff;
+  border: 2px solid #fff;
+  color: #000;
+}
+
+tr:nth-child(even) {
+  background-color: Lightgreen;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(201, 201, 201);
 }

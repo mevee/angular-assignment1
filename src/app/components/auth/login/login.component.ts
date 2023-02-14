@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user';
 import { RepoService } from 'src/app/services/repo/repo.service';
 import { SessionService } from 'src/app/services/session/session.service';
 import { RouteConsts } from 'src/app/util/route-constants';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { RouteConsts } from 'src/app/util/route-constants';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private session: SessionService,private repo :RepoService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private session: SessionService, private repo: RepoService, private router: Router, private _snackBar: MatSnackBar) { }
 
   TAG: String = "LoginComponent"
   hide = true
@@ -23,13 +24,17 @@ export class LoginComponent implements OnInit {
   loading = false
 
   formData = {
-    userId: '',
+    userId: "vikesh",
     password: "",
-    mobile: "",
+    mobile: ""
   }
 
   ngOnInit(): void {
+    if (this.session.checkIfLoggedIn()) {
+      this.router.navigate([RouteConsts.DASHBOARD]);
+    }
   }
+
 
   submit() {
     // console.log("onSubmit() of Register screen called");
@@ -51,7 +56,7 @@ export class LoginComponent implements OnInit {
       this.loading = true
       setTimeout(() => {
         this.loading = false
-        
+
         this.session.saveUser(user)
         this.addLoggedUserToList()
         this.router.navigate([RouteConsts.DASHBOARD]);

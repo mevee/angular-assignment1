@@ -1,23 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-
     <!-- side sliding window view start-->
     <mat-sidenav class="sidenav" [opened]="sideNavOpened">
         <mat-sidenav position="end">End</mat-sidenav>
-
-        <mat-toolbar>
-            <h3>Hi</h3>
-            <span class="example-spacer"></span>
-            <div (click)="toggle()" class="icon24">
-                <mat-icon>close</mat-icon>
-            </div>
-        </mat-toolbar>
-
-        <div class="sidenav-options">
-            <button (click)="navigetTo(0)" class="sidenav-item">User List</button>
-            <button (click)="navigetTo(1)"  class="sidenav-item">Add User</button>
+        <div class="row align-items-start ite-gap-5">
+            <div class="s-v-10"></div>
+            <button (click)="navigetTo(0)" class="btn ">User List</button>
+            <button (click)="navigetTo(1)" class="btn ">Add User</button>
         </div>
-
-
     </mat-sidenav>
     <!-- side sliding window view end-->
 
@@ -27,27 +16,25 @@
 
         <mat-toolbar>
             <mat-toolbar-row>
-                <Button (click)="toggle()"><mat-icon>menu</mat-icon></Button>
+                <button (click)="toggle()" class="btn">
+                    <mat-icon>menu</mat-icon>
+                </button>
 
                 <span class="example-spacer"></span>
                 <h2>Hi, </h2>
                 <h2>{{loggedUser?.name}} </h2>
 
                 <div class="spacer10"></div>
-                <button (click)="logout()">
+                <button (click)="logout()" class="btn">
                     <mat-icon>logout</mat-icon>
                 </button>
             </mat-toolbar-row>
         </mat-toolbar>
 
         <!-- app sub component will show up here -->
-
         <ng-component></ng-component>
 
     </mat-sidenav-content>
-
-
-
 
     <!-- main content view end-->
 

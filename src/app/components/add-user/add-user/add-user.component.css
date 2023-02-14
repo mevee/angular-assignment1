@@ -35,3 +35,21 @@
     justify-content: center;
 
 }
+
+
+.spaceV8 {
+    height: 8px;
+}
+
+.spaceV24 {
+    height: 24px;
+}
+
+.loader {
+    width: auto;
+    height: 10%;
+    margin: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}

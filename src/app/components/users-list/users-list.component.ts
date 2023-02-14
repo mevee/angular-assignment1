@@ -16,7 +16,7 @@ import { RouteConsts } from 'src/app/util/route-constants';
 })
 export class UsersListComponent implements OnInit {
 
-  displayedColumns: string[] = ['User name', 'password', 'role', 'action'];
+  displayedColumns: string[] = ['User name', 'password', 'role',];
   userList: any;
   searchKey = ''
   _originalList: User[];
@@ -61,11 +61,12 @@ export class UsersListComponent implements OnInit {
   ngOnDestroy() {
     // this.repo.getAllUser.uns
   }
+  
   addItem() {
     let user = new User();
     user.id = "Name" + Math.floor(Math.random() * 10000)
     user.name = "Name" + Math.floor(Math.random() * 10000)
-    user.password = "Name" + Math.floor(Math.random() * 10000)
+    user.password = "Name@123456" + Math.floor(Math.random() * 10000)
     user.role = "manager"
 
     this.repo.addUser(user)

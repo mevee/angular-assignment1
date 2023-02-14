@@ -12,15 +12,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
+import { MatTableModule } from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-import {MatSidenavModule}    from '@angular/material/sidenav'
-import {MatDialogModule} from '@angular/material/dialog';
-import { UsersListComponent } from './components/users-list/users-list.component'; 
-import {MatTableModule} from '@angular/material/table'; 
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatDialogModule } from '@angular/material/dialog';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
- 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FilterPipe } from './appPipes/filter.pipe';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 @NgModule({
   declarations: [
@@ -29,6 +40,8 @@ import {MatTableModule} from '@angular/material/table';
     LoginComponent,
     DashboardComponent,
     UsersListComponent,
+    FilterPipe,
+    PageNotFoundComponent,
 
   ],
   imports: [
@@ -36,18 +49,23 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatIconModule,
     MatInputModule,
     MatCardModule,
     MatSnackBarModule,
     FormsModule,
     MatSidenavModule,
     MatDialogModule,
-    MatTableModule
-
+    MatProgressSpinnerModule,
+    NgbModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

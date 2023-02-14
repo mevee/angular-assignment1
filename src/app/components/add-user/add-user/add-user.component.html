@@ -1,4 +1,4 @@
-<div class="mianform">
+<!-- <div class="mianform">
 
     <div class="container">
         <mat-card class=" column">
@@ -49,4 +49,64 @@
 
 
 
+</div> -->
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div></div>
+
+        <div class="row container m-5 justify-content-center m-2" style="width: 400px;">
+            <form>
+                <div class="mb-3">
+                    <label for="userId" class="form-label">User Id</label>
+                    <input type="text" [(ngModel)]="formData.userId" class="form-control alignCenter"
+                        aria-describedby="user id" name="userid" placeholder="UserId">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="text" [(ngModel)]="formData.password" class="form-control alignCenter"
+                        aria-describedby="Password" name="password" placeholder="Password" required minlength="12">
+                </div>
+
+                <div class="mb-3">
+                    <label for="cPassword" class="form-label">Confirm Password</label>
+                    <input type="text" [(ngModel)]="formData.cPassword" class="form-control alignCenter"
+                        aria-describedby="Confirm Password" name="cPassword" placeholder="Confirm Password">
+                </div>
+
+                <div class="mb-3">
+                    <label for="role" class="form-label">Select Role </label>
+                    <select [(ngModel)]="formData.role" fomr="contentType" class="form-control" name="role">
+                        <option value="">Select Role</option>
+                        <option value="manager">Manager</option>
+                        <option value="site_admin">Site Admin</option>
+                        <option value="operator">Operator</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="spaceV16"></div>
+
+                    <button class="btn btn-grey border" (click)="clear()">Clear</button>
+                    <div class="spaceV8"></div>
+
+                    <button class="btn btn-primary" (click)="submit()">Submit</button>
+
+                </div>
+
+                <div class="loader" *ngIf="loading">
+
+                    <div class="spinner-border text-primary">
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div></div>
+
+    </div>
 </div>

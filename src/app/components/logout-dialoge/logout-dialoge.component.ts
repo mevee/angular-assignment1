@@ -1,6 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services/session/session.service';
+import { RouteConsts } from 'src/app/util/route-constants';
 
 @Component({
   selector: 'app-logout-dialoge',
@@ -9,9 +12,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class LogoutDialogeComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<LogoutDialogeComponent>) {
+  constructor(private session: SessionService,
+    private router: Router, private dialogRef: MatDialogRef<LogoutDialogeComponent>) {
     // this.description = data.description;
-    this.title="Do you want to logout?"
+    this.title = "Do you want to logout?"
   }
   title: string;
 
@@ -21,6 +25,9 @@ export class LogoutDialogeComponent implements OnInit {
 
   yes() {
     this.dialogRef.close();
+
+    this.session.logout();
+    this.router.navigate([RouteConsts.LOGIN]);
   }
 
   close() {
