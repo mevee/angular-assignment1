@@ -53,3 +53,7 @@
     display: flex;
     justify-content: center;
 }
+
+.field{
+    width: 100%;
+}

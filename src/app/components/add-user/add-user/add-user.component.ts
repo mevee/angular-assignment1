@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -16,7 +17,7 @@ import { RouteConsts } from 'src/app/util/route-constants';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor(private repository: RepoService, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private repository: RepoService, private router: Router, private _snackBar: MatSnackBar,@Optional() public dialogRef?: MatDialogRef<AddUserComponent>) {
     console.log("AddUserComponent :: constructor()")
 
     this._obsObject = new BehaviorSubject(new User())
@@ -58,6 +59,7 @@ export class AddUserComponent implements OnInit {
       // }
 
     });
+    console.log("dialogReference :: "+this.dialogRef);
 
   }
   clear() {
@@ -70,7 +72,6 @@ export class AddUserComponent implements OnInit {
   }
 
   submit() {
-    // console.log("onSubmit() of Register screen called");
     console.log("AddUserComponent :: submit() ", this.formData);
 
     var minNumberofChars = 12;
@@ -103,17 +104,29 @@ export class AddUserComponent implements OnInit {
       user.role = this.formData.role;
 
       this.loading = true
-      setTimeout(() => {
+
+    //  setTimeout(() => {
         this.loading = false
         this.showSnackBar("Congratulation user added success");
         this.repository.addUser(user)
-        this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.USER_LIST]);
+        if (this.dialogRef != null) {
+          this.dialogRef.close()
+        } else {
+          this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.USER_LIST]);
+        }
 
-      }, 2000);
-
-
+   //   }, 2000);
 
     }
+  }
+
+  close() {
+    if (this.dialogRef != null) {
+      this.dialogRef.close()
+    } else {
+      this.router.navigate([RouteConsts.DASHBOARD + '/' + RouteConsts.USER_LIST]);
+    }
+
   }
 
   showSnackBar(message?: string,) {

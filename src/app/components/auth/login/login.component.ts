@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   loading = false
 
   formData = {
-    userId: "vikesh",
+    userId: "",
     password: "",
     mobile: ""
   }

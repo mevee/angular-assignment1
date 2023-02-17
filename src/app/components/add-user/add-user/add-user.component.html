@@ -1,98 +1,49 @@
-<!-- <div class="mianform">
-
-    <div class="container">
-        <mat-card class=" column">
-            <mat-form-field >
-                <mat-label>UserId</mat-label>
-                <input type="text" [(ngModel)]="formData.userId" matInput>
-            </mat-form-field>
-
-
-            <mat-form-field >
-                <mat-label>Password</mat-label>
-                <input [(ngModel)]="formData.password" id="password" matInput type="password" maxlength="12"
-                    [type]="hide?'password':'text'">
-
-                <mat-icon matSuffix (click)="hide=!hide">{{hide?'visibility_off':'visibility'}}</mat-icon>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Confirm Password</mat-label>
-                <input [(ngModel)]="formData.cPassword" id="password" matInput type="password" maxlength="12"
-                    [type]="hide?'password':'text'">
-
-                <mat-icon matSuffix (click)="hide=!hide">{{hide?'visibility_off':'visibility'}}</mat-icon>
-            </mat-form-field>
-
-            <mat-form-field >
-                <mat-label>Role</mat-label>
-                <select matNativeControl required [(ngModel)]="formData.role">
-                    <option value="manager">Manager</option>
-                    <option value="site_admin">Site Admin</option>
-                    <option value="operator">Operator</option>
-                </select>
-            </mat-form-field>
-
-            <div class="row">
-                <button mat-button (click) ="clear()">Clear</button>
-                <button mat-button (click)="submit()">Submit</button>
-
-            </div>
-           
-            <mat-spinner [color]="color" [mode]="mode" [ngStyle]="{'visibility':loading==true ? 'visible' : 'hidden'}">
-            </mat-spinner>
-            
-        </mat-card>
-
-    </div>
-
-
-
-
-</div> -->
-
-
 <div class="container-fluid">
     <div class="row">
-        <div></div>
+        <div class="row">
+            <h1 class="col">Add User</h1>
+            <button *ngIf="dialogRef!=undefined" mat-icon-button (click)="close()" color="black" class="col"
+                style="width: 30px; height: 30px;">
+                <mat-icon>close</mat-icon>
+            </button>
 
-        <div class="row container m-5 justify-content-center m-2" style="width: 400px;">
+        </div>
+
+        <div class="row  justify-content-center m-2 p-2 " style="width: 400px;">
             <form>
-                <div class="mb-3">
-                    <label for="userId" class="form-label">User Id</label>
-                    <input type="text" [(ngModel)]="formData.userId" class="form-control alignCenter"
-                        aria-describedby="user id" name="userid" placeholder="UserId">
-                </div>
+                <mat-form-field class="field" appearance="outline">
+                    <mat-label>User Id</mat-label>
+                    <input matInput type="text" [(ngModel)]="formData.userId" [ngModelOptions]="{standalone:true}">
+                </mat-form-field>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="text" [(ngModel)]="formData.password" class="form-control alignCenter"
-                        aria-describedby="Password" name="password" placeholder="Password" required minlength="12">
-                </div>
+                <mat-form-field class="field" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="text" [(ngModel)]="formData.password" placeholder="Password"
+                        [ngModelOptions]="{standalone:true}">
+                </mat-form-field>
 
-                <div class="mb-3">
-                    <label for="cPassword" class="form-label">Confirm Password</label>
-                    <input type="text" [(ngModel)]="formData.cPassword" class="form-control alignCenter"
-                        aria-describedby="Confirm Password" name="cPassword" placeholder="Confirm Password">
-                </div>
+                <mat-form-field class="field" appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput type="text" [(ngModel)]="formData.cPassword" [ngModelOptions]="{standalone:true}"
+                        placeholder="Confirm Password">
+                </mat-form-field>
 
-                <div class="mb-3">
-                    <label for="role" class="form-label">Select Role </label>
-                    <select [(ngModel)]="formData.role" fomr="contentType" class="form-control" name="role">
+                <mat-form-field class="field" appearance="outline">
+                    <select matNativeControl [(ngModel)]="formData.role" name="role">
                         <option value="">Select Role</option>
                         <option value="manager">Manager</option>
                         <option value="site_admin">Site Admin</option>
                         <option value="operator">Operator</option>
                     </select>
-                </div>
+                </mat-form-field>
 
                 <div class="row">
                     <div class="spaceV16"></div>
 
-                    <button class="btn btn-grey border" (click)="clear()">Clear</button>
+                    <button mat-button class="bg-grey text-black border" (click)="clear()">Clear</button>
                     <div class="spaceV8"></div>
 
-                    <button class="btn btn-primary" (click)="submit()">Submit</button>
+                    <button mat-button class="bg-primary text-white" (click)="submit()">Submit</button>
 
                 </div>
 

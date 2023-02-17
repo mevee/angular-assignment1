@@ -1,40 +1,38 @@
-<div class="container-fluid">
+<div class="container">
 
     <div class="row justify-content-center m-5 pt-3">
-        <div class="spaceV24"></div>
-        <div class="spaceV24"></div>
-        <div class="spaceV24"></div>
-        <div class="spaceV24"></div>
+        <div></div>
 
-        <div class="row  rounded m-4 p-4 " style="width: 320px;">
-            <div class="form ">
-                <div class="spaceV8"></div>
+        <div class="" style="width: 360px;">
+            <mat-card class="">
+                <form>
 
-                <div class="form-group">
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>User id</mat-label>
+                        <input matInput type="text" id="userId" [(ngModel)]="formData.userId" placeholder="User id"
+                            [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
 
-                    <input type="text" [(ngModel)]="formData.userId" class="form-control alignCenter"
-                        aria-describedby="user id" placeholder="UserId">
-                </div>
-                <div class="spaceV8"></div>
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [(ngModel)]="formData.password" [type]="hide?'password':'text'"
+                            [ngModelOptions]="{standalone: true}">
+                        <button mat-icon-button matSuffix (click)="hide=!hide">
+                            <mat-icon>{{hide?'visibility_off':'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
 
-                <div class="form-group">
-                    <input [(ngModel)]="formData.password" matInput type="password" maxlength="12"
-                        [type]="hide?'password':'text'" class="form-control alignCenter" aria-describedby="password"
-                        placeholder="Password">
-                    <!-- <mat-icon matSuffix (click)="hide=!hide">{{hide?'visibility_off':'visibility'}}</mat-icon> -->
-                </div>
-                <div class="spaceV8"></div>
+                    <button mat-button (click)="submit()" class="field bg-primary text-white mb-3">Submit</button>
 
-                <button (click)="submit()" class="btn bg-primary text-white col-md-12">Submit</button>
+                    <div class="loader m-2" *ngIf="loading">
 
-                <div class="loader">
-
-                    <div *ngIf="loading" class="spinner-border text-primary d-none">
+                        <div class="spinner-border text-primary">
+                        </div>
                     </div>
-                </div>
-                <div class="spaceV8"></div>
 
-            </div>
+                </form>
+
+            </mat-card>
 
 
             <!-- <mat-form-field>
@@ -48,6 +46,8 @@
 
 
         </div>
+
+        <div></div>
     </div>
 </div>
 
